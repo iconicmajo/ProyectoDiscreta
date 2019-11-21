@@ -7,7 +7,8 @@
 #*******************************
 
 #imports de librerias correspondientes
-
+import sys
+#import range
 #Inicio del programa
 #variables
 numero=0
@@ -27,11 +28,11 @@ while opcion !=3:
     opcion = int(opcion)
     #Particion de numeros
     if opcion ==1:
-        print ("Usted ha elegido mostrar todas las apuestas")
+        print ("Usted ha elegido mostrar las parcticiones")
         numero = 5
         particiones = [1] + [0] *numero
-        for i in xrange(1,numero+1):
-            for j in xrange(i, numero+1):
+        for i in range(1,numero+1):
+            for j in range(i, numero+1):
                 particiones[j] +=particiones[j-i]
             #print(particiones)
                 print(particiones[numero])
