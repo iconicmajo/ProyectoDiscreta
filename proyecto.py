@@ -11,7 +11,7 @@ import sys
 #import range
 #Inicio del programa
 #variables
-numero=0
+numero = 0
 k=0
 opcion= 0
 #menu
@@ -29,7 +29,10 @@ while opcion !=3:
     #Particion de numeros
     if opcion ==1:
         print ("Usted ha elegido mostrar las parcticiones")
-        numero = 5
+        numero = input("Ingrese el numero para partir ")
+        while not numero.isdigit():
+            numero = input("Ingrese numero para partir ")
+        numero = int(numero)
         particiones = [1] + [0] *numero
         for i in range(1,numero+1):
             for j in range(i, numero+1):
