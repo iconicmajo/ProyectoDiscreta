@@ -6,6 +6,42 @@
 #Juan Diego Solorzano #18
 #*******************************
 
+
+
+#Definicion de Funciones
+def particionesDe(n):
+    a=[0 for i in range(n + 1)]
+    k = 1
+    y = n - 1
+    while k != 0:
+        x = a[k - 1] + 1
+        k -= 1
+        while 2 * x <= y:
+            a[k] = x
+            y -= x
+            k += 1
+        l = k + 1
+        while x <= y:
+            a[k] = x
+            a[l] = y
+            yield a[:k + 2]
+            x += 1
+            y -= 1
+        a[k] = x + y
+        y = x + y - 1
+        yield a[:k + 1]
+
+        
+def Calcular(n,k):
+	particiones = particionesDe(int(n))
+	for i in particiones:
+		if int(k) == 0:
+			print(i)
+		elif len(i) == int(k):
+			print(i)
+
+
+                
 #imports de librerias correspondientes
 import sys
 #import range
@@ -30,15 +66,8 @@ while opcion !=3:
     if opcion ==1:
         print ("Usted ha elegido mostrar las parcticiones")
         numero = input("Ingrese el numero para partir ")
-        while not numero.isdigit():
-            numero = input("Ingrese numero para partir ")
-        numero = int(numero)
-        particiones = [1] + [0] *numero
-        for i in range(1,numero+1):
-            for j in range(i, numero+1):
-                particiones[j] +=particiones[j-i]
-            #print(particiones)
-                print(particiones[numero])
+        k = input("Ingrese longitud de particiones ")
+        Calcular(numero,k)
         print("********************************************")
     #Mostrar dosos los integrantes
     elif opcion == 2:
